@@ -63,13 +63,13 @@ export default {
   }
   .list-item{
     display: flex;
-    height: 80px;
     margin-top: 30px;
-    padding: 20px;
+    padding: 15px 20px;
     border: 2px solid #ccc;
     box-shadow: 1px 3px 7px 1px rgba(0, 0, 0, 0.3);
     transition: box-shadow .2s linear;
     cursor: pointer;
+    align-items: center;
     &:hover {
       box-shadow: 1px 3px 7px 1px rgba(0, 0, 0, 0.5);
       transition: box-shadow .1s linear;
