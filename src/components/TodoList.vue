@@ -72,7 +72,6 @@ export default {
     align-items: center;
     &:hover {
       box-shadow: 1px 3px 7px 1px rgba(0, 0, 0, 0.5);
-      transition: box-shadow .1s linear;
     }
     .sidebox {
       width: 90%;

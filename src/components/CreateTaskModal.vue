@@ -4,24 +4,17 @@
       <div class="modal-container">
 
         <div class="modal-header">
-          <slot name="header">
-            default header
-          </slot>
+          <h2>Создание задачи</h2>
+          <button class="modal-close-button" @click="showModal = false">
+            X
+          </button>
         </div>
 
         <div class="modal-body">
-          <slot name="body">
-            default body
-          </slot>
-        </div>
-
-        <div class="modal-footer">
-          <slot name="footer">
-            default footer
-            <button class="modal-default-button" @click="showModal = false">
-              OK
-            </button>
-          </slot>
+          <input type="text" name="title" class="modal-body__text-input" v-model="task.title">
+          <input type="text" name="description" class="modal-body__text-input" v-model="task.description">
+          <input type="file" name="description" class="modal-body__file-input" @change="setImage($event.target.files)">
+          <button @click="addTask" class="add-task-btn">Создать</button>
         </div>
       </div>
     </div>
@@ -32,7 +25,8 @@
 export default {
   name: 'CreateTaskModal',
   data: () => ({
-    showModal: false
+    showModal: false,
+    task: {}
   }),
   mounted () {
     this.$root.$on('openCreateModal', this.createModal)
@@ -40,21 +34,38 @@ export default {
   methods: {
     createModal (open) {
       this.showModal = open
+    },
+    setImage (file) {
+      const image = file[0]
+      const reader = new FileReader()
+      reader.readAsDataURL(image)
+      reader.onloadend = () => {
+        // let block = reader.result.split(';')
+        // this.model.image = block[1].split(',')[1]
+        this.task.img = reader.result
+      }
+    },
+    addTask () {
+      this.task.done = false
+      console.log(this.task)
+      this.showModal = false
     }
   }
 }
 </script>
 
-<style scoped>
+<style scoped lang="scss">
   .modal-mask {
     position: fixed;
-    z-index: 9998;
+    z-index: 99;
     top: 0;
     left: 0;
     width: 100%;
     height: 100%;
     background-color: rgba(0, 0, 0, .5);
-    display: table;
+    display: flex;
+    align-items: center;
+    justify-content: center;
     transition: opacity .3s ease;
   }
 
@@ -64,7 +75,7 @@ export default {
   }
 
   .modal-container {
-    width: 300px;
+    width: 500px;
     margin: 0 auto;
     padding: 20px 30px;
     background-color: #fff;
@@ -72,19 +83,6 @@ export default {
     box-shadow: 0 2px 8px rgba(0, 0, 0, .33);
     transition: all .3s ease;
     font-family: Helvetica, Arial, sans-serif;
-  }
-
-  .modal-header h3 {
-    margin-top: 0;
-    color: #42b983;
-  }
-
-  .modal-body {
-    margin: 20px 0;
-  }
-
-  .modal-default-button {
-    float: right;
   }
 
   .modal-enter {
@@ -97,7 +95,47 @@ export default {
 
   .modal-enter .modal-container,
   .modal-leave-active .modal-container {
-    -webkit-transform: scale(1.1);
     transform: scale(1.1);
+  }
+  .modal-header {
+    position: relative;
+    .modal-close-button {
+      position: absolute;
+      top: -25px;
+      right: -15px;
+      height: 25px;
+      border-radius: 2px;
+      background-color: #f1f1f1;
+      transition: all .2s ease;
+      &:hover {
+        box-shadow: 1px 2px 5px 1px rgba(0, 0, 0, 0.3);
+      }
+    }
+  }
+  .modal-body{
+    display: flex;
+    flex-direction: column;
+    &__text-input {
+      padding-left: 10px;
+      width: 80%;
+      height: 30px;
+      margin: 0 auto;
+      margin-top: 20px;
+    }
+    &__file-input {
+      margin-top: 20px;
+      margin-left: calc(10% - 8px);
+    }
+    .add-task-btn {
+      margin: 20px auto;
+      width: 120px;
+      height: 30px;
+      border-radius: 2px;
+      background-color: #f1f1f1;
+      transition: all .2s ease;
+      &:hover {
+        box-shadow: 1px 2px 5px 1px rgba(0, 0, 0, 0.3);
+      }
+    }
   }
 </style>
