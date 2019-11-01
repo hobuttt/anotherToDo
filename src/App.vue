@@ -41,7 +41,7 @@ export default {
     margin-top: 40px;
     &__btn {
       font-size: 2rem;
-      border-radius: 10px;
+      border-radius: 5px;
       padding: 8px 15px;
       /*padding-top: 5px;*/
       outline: none;
@@ -49,7 +49,6 @@ export default {
       background-color: #f6f6f6;
       &:hover {
         box-shadow: 1px 2px 5px 1px rgba(0, 0, 0, 0.3);
-        transition: box-shadow .1s linear;
       }
     }
   }
