@@ -10,11 +10,14 @@
           </button>
         </div>
 
-        <div class="modal-body">
+        <div class="modal-body modal-body-form">
           <input type="text" name="title" class="modal-body__text-input" v-model="task.title">
           <input type="text" name="description" class="modal-body__text-input" v-model="task.description">
           <input type="file" name="description" class="modal-body__file-input" @change="setImage($event.target.files)">
           <button @click="addTask" class="add-task-btn">Создать</button>
+        </div>
+        <div class="modal-body modal-body-task">
+
         </div>
       </div>
     </div>
@@ -40,14 +43,13 @@ export default {
       const reader = new FileReader()
       reader.readAsDataURL(image)
       reader.onloadend = () => {
-        // let block = reader.result.split(';')
-        // this.model.image = block[1].split(',')[1]
         this.task.img = reader.result
       }
     },
     addTask () {
       this.task.done = false
-      console.log(this.task)
+      this.$root.$emit('pushTask', this.task)
+      this.task = {}
       this.showModal = false
     }
   }
@@ -112,9 +114,11 @@ export default {
       }
     }
   }
+  .modal-body-form {
+    flex-direction: column;
+  }
   .modal-body{
     display: flex;
-    flex-direction: column;
     &__text-input {
       padding-left: 10px;
       width: 80%;

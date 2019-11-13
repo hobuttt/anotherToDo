@@ -5,7 +5,7 @@
     <TodoList/>
   </transition>
     <div class="create-task">
-      <button class="create-task__btn" @click="createTask">+</button>
+      <button class="create-task__btn" @click="openModal">+</button>
     </div>
     <CreateTaskModal/>
   </div>
@@ -21,7 +21,7 @@ export default {
   }),
   components: { TodoList, CreateTaskModal },
   methods: {
-    createTask () {
+    openModal () {
       this.$root.$emit('openCreateModal', true)
     }
   }
@@ -43,7 +43,7 @@ export default {
       font-size: 2rem;
       border-radius: 5px;
       padding: 8px 15px;
-      /*padding-top: 5px;*/
+      padding-top: 5px;
       outline: none;
       transition: box-shadow .2s;
       background-color: #f6f6f6;

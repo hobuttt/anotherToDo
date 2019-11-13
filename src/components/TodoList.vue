@@ -7,7 +7,7 @@
         class="list-item"
         :class="{'green-yello': item.done}"
         :key="index"
-        @click="openTask"
+        @click="openTask(item)"
       >
         <div class="list-item__image">
           <img :src="item.img" alt="">
@@ -31,25 +31,18 @@ export default {
   data () {
     return {
       pageTitle: 'My ToDo list',
-      listItems: [
-        {
-          title: 'Task 1',
-          description: 'Do Just work is wery good and simple Do Just work is wery good and simple Do Just work is wery good and simple Do Just work is wery good and simple Do Just work is wery good and simpleDo Just work is wery good and simpleDo Just work is wery ',
-          img: 'https://vignette.wikia.nocookie.net/supermarioglitchy4/images/a/a5/FlyingSpaghettiMonster.png/revision/latest?cb=20190901022219',
-          done: false
-        },
-        {
-          title: 'Task 2',
-          description: 'Just Do',
-          img: 'https://vignette.wikia.nocookie.net/supermarioglitchy4/images/a/a5/FlyingSpaghettiMonster.png/revision/latest?cb=20190901022219',
-          done: false
-        }
-      ]
+      listItems: []
     }
   },
+  mounted () {
+    this.$root.$on('pushTask', this.pushTask)
+  },
   methods: {
-    openTask () {
-      console.log(11)
+    openTask (task) {
+      console.log(task)
+    },
+    pushTask (task) {
+      this.listItems.push(task)
     }
   }
 }
@@ -63,6 +56,7 @@ export default {
   }
   .list-item{
     display: flex;
+    height: 100px;
     margin-top: 30px;
     padding: 15px 20px;
     border: 2px solid #ccc;
@@ -83,6 +77,7 @@ export default {
       height: 100%;
       img {
         width: 100%;
+        height: 100%;
       }
     }
     &__title {
