@@ -2,7 +2,6 @@
   <div class="modal-mask" v-if="showModal">
     <div class="modal-wrapper">
       <div class="modal-container">
-
         <div class="modal-header">
           <h2>Создание задачи</h2>
           <button class="modal-close-button" @click="showModal = false">
@@ -12,7 +11,7 @@
 
         <div class="modal-body modal-body-form">
           <input type="text" name="title" class="modal-body__text-input" v-model="task.title">
-          <input type="text" name="description" class="modal-body__text-input" v-model="task.description">
+          <textarea type="text" name="description" class="modal-body__text-input modal-body__texta" v-model="task.description"></textarea>
           <input type="file" name="description" class="modal-body__file-input" @change="setImage($event.target.files)">
           <button @click="addTask" class="add-task-btn">Создать</button>
         </div>
@@ -125,6 +124,14 @@ export default {
       height: 30px;
       margin: 0 auto;
       margin-top: 20px;
+    }
+    &__texta {
+      /*height: 60px;*/
+      max-width: 80%;
+      min-width: 40%;
+      max-height: 400px;
+      min-height: 60px;
+      transition: all .1s ease;
     }
     &__file-input {
       margin-top: 20px;
