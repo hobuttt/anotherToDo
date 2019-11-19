@@ -9,6 +9,11 @@
         :key="index"
         @click="openTask(item)"
       >
+        <div class="list-item__icons">
+          <PencilIcon class="pencil" @click="deleteTask"/>
+          <DeleteIcon class="delete" @click="editTask"/>
+
+        </div>
         <div class="list-item__image">
           <img :src="item.img" alt="">
         </div>
@@ -26,8 +31,12 @@
 </template>
 
 <script>
+import PencilIcon from 'vue-material-design-icons/Pencil.vue'
+import DeleteIcon from 'vue-material-design-icons/Delete.vue'
+
 export default {
   name: 'TodoList',
+  components: { PencilIcon, DeleteIcon },
   data () {
     return {
       pageTitle: 'My ToDo list',
@@ -43,6 +52,12 @@ export default {
     },
     pushTask (task) {
       this.listItems.push(task)
+    },
+    deleteTask () {
+      console.log(11)
+    },
+    editTask () {
+      console.log(22)
     }
   }
 }
@@ -55,6 +70,7 @@ export default {
     margin-top: 20px;
   }
   .list-item{
+    position: relative;
     display: flex;
     height: 100px;
     margin-top: 30px;
@@ -66,6 +82,20 @@ export default {
     align-items: center;
     &:hover {
       box-shadow: 1px 3px 7px 1px rgba(0, 0, 0, 0.5);
+    }
+    &__icons {
+      position: absolute;
+      display: flex;
+      top: 10px;
+      right: 10px;
+      .pencil {
+        font-size: 20px;
+        margin-right: 7px;
+      }
+      .delete {
+        font-size: 20px;
+        color:red
+      }
     }
     .sidebox {
       width: 90%;
@@ -83,6 +113,8 @@ export default {
     &__title {
       width: 100%;
       text-align: center;
+      font-weight: 600;
+      font-size: 18px;
     }
     &__description {
       text-align: left;
