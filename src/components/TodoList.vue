@@ -7,11 +7,11 @@
         class="list-item"
         :class="{'green-yello': item.done}"
         :key="index"
-        @click="openTask(item)"
+        @dblclick="openTask(item)"
       >
         <div class="list-item__icons">
-          <PencilIcon class="pencil" @click="deleteTask"/>
-          <DeleteIcon class="delete" @click="editTask"/>
+          <PencilIcon class="pencil" @click="editTask(item)"/>
+          <DeleteIcon class="delete" @click="deleteTask(item)"/>
 
         </div>
         <div class="list-item__image">
@@ -53,11 +53,11 @@ export default {
     pushTask (task) {
       this.listItems.push(task)
     },
-    deleteTask () {
-      console.log(11)
+    deleteTask (task) {
+      this.listItems = this.listItems.filter(item => item.id !== task.id)
     },
-    editTask () {
-      console.log(22)
+    editTask (task) {
+      this.$root.$emit('editTask', task)
     }
   }
 }

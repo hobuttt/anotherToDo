@@ -31,10 +31,14 @@ export default {
     task: {}
   }),
   mounted () {
-    this.$root.$on('openCreateModal', this.createModal)
+    this.$root.$on('openCreateModal', this.openModal)
+    this.$root.$on('editTask', this.openEditTask)
   },
   methods: {
-    createModal (open) {
+    openModal (open) {
+      this.showModal = open
+    },
+    openEditTask (task) {
       this.showModal = open
     },
     setImage (file) {
@@ -47,6 +51,7 @@ export default {
     },
     addTask () {
       this.task.done = false
+      this.task.id = Math.random(1, 100)
       this.$root.$emit('pushTask', this.task)
       this.task = {}
       this.showModal = false
