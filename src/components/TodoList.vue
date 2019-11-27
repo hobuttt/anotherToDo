@@ -44,13 +44,13 @@ export default {
     }
   },
   mounted () {
-    this.$root.$on('pushTask', this.pushTask)
+    this.$root.$on('createTask', this.createTask)
   },
   methods: {
     openTask (task) {
       console.log(task)
     },
-    pushTask (task) {
+    createTask (task) {
       this.listItems.push(task)
     },
     deleteTask (task) {
