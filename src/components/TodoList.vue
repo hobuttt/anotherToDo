@@ -10,7 +10,7 @@
         @dblclick="openTask(item)"
       >
         <div class="list-item__icons">
-          <PencilIcon class="pencil" @click="editTask(item)"/>
+          <PencilIcon class="pencil" @click="openEditModal(item)"/>
           <DeleteIcon class="delete" @click="deleteTask(item)"/>
 
         </div>
@@ -45,6 +45,7 @@ export default {
   },
   mounted () {
     this.$root.$on('createTask', this.createTask)
+    this.$root.$on('editTask', this.createTask)
   },
   methods: {
     openTask (task) {
@@ -53,11 +54,15 @@ export default {
     createTask (task) {
       this.listItems.push(task)
     },
+    editTask (task) {
+      const taskIndex = this.listItems.indexOf(task)
+      this.listItems[taskIndex] = task
+    },
     deleteTask (task) {
       this.listItems = this.listItems.filter(item => item.id !== task.id)
     },
-    editTask (task) {
-      this.$root.$emit('editTask', task)
+    openEditModal (task) {
+      this.$root.$emit('openEditModal', task)
     }
   }
 }

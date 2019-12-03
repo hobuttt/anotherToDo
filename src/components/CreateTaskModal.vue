@@ -33,16 +33,16 @@ export default {
   }),
   mounted () {
     this.$root.$on('openCreateModal', this.openModal)
-    this.$root.$on('editTask', this.openEditTask)
+    this.$root.$on('openEditModal', this.openEditModal)
   },
   methods: {
     openModal (open) {
+      this.task = {}
       this.showModal = open
     },
-    openEditTask (task) {
+    openEditModal (task) {
       this.task = task
       this.isEdit = true
-      console.log(this.task)
       this.showModal = open
     },
     setImage (file) {
@@ -55,6 +55,8 @@ export default {
     },
     addTask () {
       if (this.isEdit) {
+        this.$root.$emit('editeTask', this.task)
+        this.showModal = false
       } else {
         this.task.done = false
         this.task.id = Math.random(1, 100)
