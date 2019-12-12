@@ -57,6 +57,7 @@ export default {
       if (this.isEdit) {
         this.$root.$emit('editeTask', this.task)
         this.showModal = false
+        this.isEdit = false
       } else {
         this.task.done = false
         this.task.id = Math.random(1, 100)
