@@ -45,7 +45,7 @@ export default {
   },
   mounted () {
     this.$root.$on('createTask', this.createTask)
-    this.$root.$on('editTask', this.createTask)
+    this.$root.$on('editTask', this.editTask)
   },
   methods: {
     openTask (task) {
