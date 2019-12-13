@@ -28,17 +28,21 @@ export default {
   name: 'CreateTaskModal',
   data: () => ({
     showModal: false,
-    task: {}
+    task: {},
+    isEdit: false
   }),
   mounted () {
     this.$root.$on('openCreateModal', this.openModal)
-    this.$root.$on('editTask', this.openEditTask)
+    this.$root.$on('openEditModal', this.openEditModal)
   },
   methods: {
     openModal (open) {
+      this.task = {}
       this.showModal = open
     },
-    openEditTask (task) {
+    openEditModal (task) {
+      this.task = task
+      this.isEdit = true
       this.showModal = open
     },
     setImage (file) {
@@ -50,11 +54,17 @@ export default {
       }
     },
     addTask () {
-      this.task.done = false
-      this.task.id = Math.random(1, 100)
-      this.$root.$emit('pushTask', this.task)
-      this.task = {}
-      this.showModal = false
+      if (this.isEdit) {
+        this.$root.$emit('editeTask', this.task)
+        this.showModal = false
+        this.isEdit = false
+      } else {
+        this.task.done = false
+        this.task.id = Math.random(1, 100)
+        this.$root.$emit('createTask', this.task)
+        this.task = {}
+        this.showModal = false
+      }
     }
   }
 }
