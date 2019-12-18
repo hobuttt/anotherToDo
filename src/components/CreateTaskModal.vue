@@ -41,7 +41,7 @@ export default {
       this.showModal = open
     },
     openEditModal (task) {
-      this.task = task
+      this.task = Object.assign({}, task)
       this.isEdit = true
       this.showModal = open
     },
@@ -55,7 +55,7 @@ export default {
     },
     addTask () {
       if (this.isEdit) {
-        this.$root.$emit('editeTask', this.task)
+        this.$root.$emit('editTask', this.task)
         this.showModal = false
         this.isEdit = false
       } else {

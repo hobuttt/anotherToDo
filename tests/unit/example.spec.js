@@ -3,7 +3,7 @@ import TodoList from '@/components/TodoList'
 
 describe('TodoList.vue', () => {
   it('renders props.msg when passed', () => {
-    const msg = 'new message'
+    const msg = 'My ToDo list'
     const wrapper = shallowMount(TodoList, {
       propsData: { msg }
     })
