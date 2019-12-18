@@ -54,9 +54,13 @@ export default {
     createTask (task) {
       this.listItems.push(task)
     },
-    editTask (task) {
+    editTask (editedTask) {
+      const task = this.listItems.find(task => task.id === editedTask.id)
       const taskIndex = this.listItems.indexOf(task)
-      this.listItems[taskIndex] = task
+      console.log(editedTask)
+      console.log(this.listItems)
+      this.listItems[taskIndex] = editedTask
+      console.log(this.listItems)
     },
     deleteTask (task) {
       this.listItems = this.listItems.filter(item => item.id !== task.id)

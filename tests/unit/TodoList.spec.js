@@ -31,8 +31,8 @@ describe('Methods', () => {
   })
   it('editTask is worked correct', () => {
     wrapper.vm.listItems = [task]
-    wrapper.vm.editTask(task2)
-    expect(wrapper.vm.listItems).toEqual([task2])
+    wrapper.vm.editTask({ title: 'testy', id: 42 })
+    expect(wrapper.vm.listItems).toEqual([{ title: 'testy', id: 42 }])
   })
   it('deleteTask is worked correct', () => {
     wrapper.vm.listItems = [task, task2]
