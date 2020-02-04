@@ -11,9 +11,13 @@
 
         <div class="modal-body modal-body-form">
           <input type="text" name="title" class="modal-body__text-input" v-model="task.title">
-          <textarea type="text" name="description" class="modal-body__text-input modal-body__texta" v-model="task.description"></textarea>
+          <textarea
+            type="text"
+            name="description"
+            class="modal-body__text-input modal-body__texta"
+            v-model="task.description"/>
           <input type="file" name="description" class="modal-body__file-input" @change="setImage($event.target.files)">
-          <button @click="addTask" class="add-task-btn">Создать</button>
+          <button @click="addTask" class="add-task-btn">Сохранить</button>
         </div>
         <div class="modal-body modal-body-task">
 
@@ -41,7 +45,7 @@ export default {
       this.showModal = open
     },
     openEditModal (task) {
-      this.task = Object.assign({}, task)
+      this.task = task
       this.isEdit = true
       this.showModal = open
     },
