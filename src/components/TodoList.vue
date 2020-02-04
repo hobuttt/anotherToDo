@@ -57,16 +57,14 @@ export default {
     editTask (editedTask) {
       const task = this.listItems.find(task => task.id === editedTask.id)
       const taskIndex = this.listItems.indexOf(task)
-      console.log(editedTask)
-      console.log(this.listItems)
       this.listItems[taskIndex] = editedTask
-      console.log(this.listItems)
+      console.log(this.listItems[taskIndex])
     },
     deleteTask (task) {
       this.listItems = this.listItems.filter(item => item.id !== task.id)
     },
     openEditModal (task) {
-      this.$root.$emit('openEditModal', task)
+      this.$root.$emit('openEditModal', Object.assign({}, task))
     }
   }
 }
