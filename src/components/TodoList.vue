@@ -7,17 +7,16 @@
         class="list-item"
         :class="{'green-yello': item.done}"
         :key="index"
-        @dblclick="openTask(item)"
+        @dblclick="showTask(item)"
       >
         <div class="list-item__icons">
           <PencilIcon class="pencil" @click="openEditModal(item)"/>
           <DeleteIcon class="delete" @click="deleteTask(item)"/>
-
         </div>
         <div class="list-item__image">
           <img :src="item.img" alt="">
         </div>
-        <div class="sidebox">
+        <div class="list-item__sidebox">
           <div class="list-item__title">
             <p>{{item.title}}</p>
           </div>
@@ -48,7 +47,8 @@ export default {
     this.$root.$on('editTask', this.editTask)
   },
   methods: {
-    openTask (task) {
+    showTask (task) {
+      this.$root.$emit('openShowModal', Object.assign({}, task))
       console.log(task)
     },
     createTask (task) {
@@ -58,7 +58,6 @@ export default {
       const task = this.listItems.find(task => task.id === editedTask.id)
       const taskIndex = this.listItems.indexOf(task)
       this.listItems[taskIndex] = editedTask
-      console.log(this.listItems[taskIndex])
     },
     deleteTask (task) {
       this.listItems = this.listItems.filter(item => item.id !== task.id)
@@ -104,7 +103,7 @@ export default {
         color:red
       }
     }
-    .sidebox {
+    &__sidebox {
       width: 90%;
       display: flex;
       flex-direction: column;
