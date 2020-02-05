@@ -8,18 +8,20 @@
       <button class="create-task__btn" @click="openModal">+</button>
     </div>
     <CreateTaskModal/>
+    <ShowTaskModal/>
   </div>
 </template>
 
 <script>
 import TodoList from './components/TodoList'
 import CreateTaskModal from './components/CreateTaskModal'
+import ShowTaskModal from './components/ShowTaskModal'
 
 export default {
   name: 'app',
   data: () => ({
   }),
-  components: { TodoList, CreateTaskModal },
+  components: { TodoList, CreateTaskModal, ShowTaskModal },
   methods: {
     openModal () {
       this.$root.$emit('openCreateModal', true)
