@@ -1,7 +1,5 @@
 import { mount, shallowMount } from '@vue/test-utils'
 import TodoList from '@/components/TodoList'
-import PencilIcon from 'vue-material-design-icons/Pencil.vue'
-import DeleteIcon from 'vue-material-design-icons/Delete.vue'
 
 const stub = jest.fn()
 const task = { title: 'test', id: 42 }
