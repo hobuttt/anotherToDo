@@ -1,0 +1,13 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`TodoList Should be render correct 1`] = `
+<div>
+  <h1>
+    My ToDo list
+  </h1>
+   
+  <section
+    class="list"
+  />
+</div>
+`;
