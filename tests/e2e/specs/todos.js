@@ -27,8 +27,16 @@ describe('Func', () => {
     cy.get('textarea[name=description]').type(' top')
     cy.get('.add-task-btn').click()
   })
-  it('show task info', () => {
+  it('show & close task info', () => {
     cy.get('.list-item').dblclick()
     cy.get('.show-task-modal').should('be.visible')
+    cy.get('.close-show-task-btn').click()
+    cy.get('.show-task-modal').should('not.be.visible')
+  })
+  it('Check task done', () => {
+    cy.get('.list-item').dblclick()
+    cy.get('.show-task-modal').should('be.visible')
+    cy.get('.done-task-btn').click()
+    cy.get('.show-task-modal').should('not.be.visible')
   })
 })

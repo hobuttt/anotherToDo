@@ -28,6 +28,6 @@ module.exports = {
     'jest-watch-typeahead/filename'
   ],
   collectCoverage: true,
-  collectCoverageFrom: ['**/*.{js,vue}', '!**/node_modules/**', '!**/*.config.js', '!**/coverage/**']
+  collectCoverageFrom: ['**/*.{js,vue}', '!**/node_modules/**', '!**/*.config.js', '!**/coverage/**', '!**/tests/e2e/**']
 
 }

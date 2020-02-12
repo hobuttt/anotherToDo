@@ -4,14 +4,14 @@
       <div class="modal-container">
         <div class="modal-header">
           <h2>Просмотр задачи</h2>
-          <button class="modal-close-button" @click="showModal = false">
+          <button class="modal-close-button close-show-task-btn" @click="showModal = false">
             X
           </button>
         </div>
 
         <div class="modal-body">
           <div></div>
-          <button class="done-task-btn">Выполненно</button>
+          <button class="done-task-btn" @click="done">Выполненно</button>
         </div>
         <div class="modal-body modal-body-task">
 
@@ -37,6 +37,10 @@ export default {
     openModal (task) {
       this.showModal = true
       this.task = task
+    },
+    done () {
+      this.task.done = true
+      this.showModal = false
     }
   }
 }
