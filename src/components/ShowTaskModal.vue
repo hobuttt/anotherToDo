@@ -11,7 +11,8 @@
 
         <div class="modal-body">
           <div></div>
-          <button class="done-task-btn" @click="done">Выполненно</button>
+          <button class="check-task-btn done-task-btn" @click="checkTask" v-if="!task.done">Выполненно</button>
+          <button class="check-task-btn undone-task-btn" @click="checkTask" v-else>Не выполненно</button>
         </div>
         <div class="modal-body modal-body-task">
 
@@ -38,8 +39,9 @@ export default {
       this.showModal = true
       this.task = task
     },
-    done () {
-      this.task.done = true
+    checkTask () {
+      this.task.done = !this.task.done
+      this.$root.$emit('editTask', this.task)
       this.showModal = false
     }
   }
@@ -108,16 +110,21 @@ export default {
   }
   .modal-body{
     display: flex;
-    .done-task-btn {
+    .check-task-btn {
       margin: 20px auto;
       width: 120px;
       height: 30px;
       border-radius: 2px;
-      background-color: #a3f182;
       transition: all .2s ease;
       &:hover {
         box-shadow: 1px 2px 5px 1px rgba(0, 0, 0, 0.3);
       }
+    }
+    .done-task-btn {
+      background-color: #a3f182;
+    }
+    .undone-task-btn {
+      background-color: #eee;
     }
   }
 </style>
