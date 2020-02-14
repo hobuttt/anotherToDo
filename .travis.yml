@@ -12,8 +12,7 @@ install:
 before_deploy:
   - html-minifier public/index.html --output public/index.html --html5 --remove-comments --remove-tag-whitespace --collapse-inline-tag-whitespace --remove-attribute-quotes --collapse-whitespace
  
- script:
-  - npm run build
+script: npm run build
 
 deploy:
   - provider: pages
