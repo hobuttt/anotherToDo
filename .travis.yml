@@ -2,9 +2,7 @@
 language: node_js
 node_js:
   - "8.6.0"
-  - "node"
 env:
-  - WEBPACK_VERSION= # Current, from package.json
   - WEBPACK_VERSION=4
 install:
   # Use npm 5.7.x since it has introduced `npm ci`
@@ -13,15 +11,18 @@ install:
   - npm ci
 
 before_deploy:
- - node-sass path/to/style.scss path/to/style.css --output-style compressed
- - html-minifier index.html --output index.html --html5 --remove-comments --remove-tag-whitespace --collapse-inline-tag-whitespace --remove-attribute-quotes --collapse-whitespace
+ - html-minifier public/index.html --output public/index.html --html5 --remove-comments --remove-tag-whitespace --collapse-inline-tag-whitespace --remove-attribute-quotes --collapse-whitespace
  
+ script:
+  - npm run build
 
 deploy:
   - provider: pages
     edge: true
-    local-dir: ./
+    local-dir: public
     target-branch: gh-pages
     github-token: $GH_TOKEN
     skip-cleanup: true
     skip_cleanup: true
+    on:
+      tags: true
