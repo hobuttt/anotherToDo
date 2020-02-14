@@ -47,7 +47,7 @@ export default {
     openEditModal (task) {
       this.task = task
       this.isEdit = true
-      this.showModal = open
+      this.showModal = true
     },
     setImage (file) {
       const image = file[0]

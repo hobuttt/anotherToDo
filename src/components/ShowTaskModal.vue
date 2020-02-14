@@ -28,8 +28,7 @@ export default {
   name: 'ShowTaskModal',
   data: () => ({
     showModal: false,
-    task: {},
-    isEdit: false
+    task: {}
   }),
   mounted () {
     this.$root.$on('openShowModal', this.openModal)
