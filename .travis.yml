@@ -1,4 +1,3 @@
- 
 language: node_js
 node_js:
   - "8.6.0"
@@ -11,7 +10,7 @@ install:
   - npm ci
 
 before_deploy:
- - html-minifier public/index.html --output public/index.html --html5 --remove-comments --remove-tag-whitespace --collapse-inline-tag-whitespace --remove-attribute-quotes --collapse-whitespace
+  - html-minifier public/index.html --output public/index.html --html5 --remove-comments --remove-tag-whitespace --collapse-inline-tag-whitespace --remove-attribute-quotes --collapse-whitespace
  
  script:
   - npm run build
