@@ -2,7 +2,7 @@ sudo: false
 
 language: node_js
 node_js:
-  - 9
+  - "stable"
 
 branches:
   only:
@@ -18,18 +18,18 @@ branches:
 #  - npm install -g sass node-sass html-minifier
 #  - npm ci
 #
-#before_deploy:
-#  - html-minifier dist/index.html --output dist/index.html --html5 --remove-comments --remove-tag-whitespace --collapse-inline-tag-whitespace --remove-attribute-quotes --collapse-whitespace
-#
-#script: npm run build
-#
-#deploy:
-#  - provider: pages
-#    edge: true
-#    local-dir: dist
-#    target-branch: gh-pages
-#    github-token: $GH_TOKEN
-#    skip-cleanup: true
-#    skip_cleanup: true
-#    on:
-#      tags: true
+before_deploy:
+  - html-minifier dist/index.html --output dist/index.html --html5 --remove-comments --remove-tag-whitespace --collapse-inline-tag-whitespace --remove-attribute-quotes --collapse-whitespace
+
+script: npm run build
+
+deploy:
+  - provider: pages
+    edge: true
+    local-dir: dist
+    target-branch: gh-pages
+    github-token: $GH_TOKEN
+    skip-cleanup: true
+    skip_cleanup: true
+    on:
+      tags: true
