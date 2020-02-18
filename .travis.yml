@@ -30,6 +30,5 @@ deploy:
     target-branch: gh-pages
     github-token: $GH_TOKEN
     skip-cleanup: true
-    skip_cleanup: true
     on:
       tags: true
