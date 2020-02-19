@@ -8,9 +8,6 @@ branches:
   only:
     - master
 
-env:
-  - WEBPACK_VERSION=4
-
 script: npm run build
 
 deploy:
