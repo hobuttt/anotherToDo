@@ -42,6 +42,7 @@ export default {
       listItems: []
     }
   },
+
   mounted () {
     this.$root.$on('createTask', this.createTask)
     this.$root.$on('editTask', this.editTask)
