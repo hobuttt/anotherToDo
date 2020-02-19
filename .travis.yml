@@ -1,25 +1,12 @@
-sudo: false
-
 language: node_js
 node_js:
   - "stable"
-
+cache:
+  directories:
+  - "node_modules"
 branches:
   only:
     - master
-#language: node_js
-#node_js:
-#  - "8.6.0"
-#env:
-#  - WEBPACK_VERSION=4
-#install:
-#  # Use npm 5.7.x since it has introduced `npm ci`
-#  - if [[ `npm -v` != 5.7* ]]; then npm install -g npm@'>=5.7.1'; fi
-#  - npm install -g sass node-sass html-minifier
-#  - npm ci
-#
-before_deploy:
-  - html-minifier dist/index.html --output dist/index.html --html5 --remove-comments --remove-tag-whitespace --collapse-inline-tag-whitespace --remove-attribute-quotes --collapse-whitespace
 
 script: npm run build
 
