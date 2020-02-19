@@ -4,9 +4,6 @@ node_js:
 cache:
   directories:
   - "node_modules"
-branches:
-  only:
-    - master
 
 script: npm run build
 
@@ -19,3 +16,4 @@ deploy:
     skip-cleanup: true
     on:
       tags: true
+      branch: master
