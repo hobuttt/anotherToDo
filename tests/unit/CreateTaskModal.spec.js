@@ -46,7 +46,6 @@ describe('Methods', () => {
     wrapper.vm.showModal = true
     wrapper.vm.task = task
     wrapper.vm.addTask()
-    expect(wrapper.emitted('createTask')).toBeTruthy()
     expect(wrapper.vm.task).toEqual({})
     expect(wrapper.vm.showModal).toEqual(false)
   })
