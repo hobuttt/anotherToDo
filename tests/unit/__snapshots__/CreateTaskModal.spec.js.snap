@@ -1,0 +1,63 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`TodoList Should be render correct 1`] = `
+<div
+  class="modal-mask"
+>
+  <div
+    class="modal-wrapper"
+  >
+    <div
+      class="modal-container"
+    >
+      <div
+        class="modal-header"
+      >
+        <h2>
+          Создание задачи
+        </h2>
+         
+        <button
+          class="modal-close-button"
+        >
+          
+          X
+        
+        </button>
+      </div>
+       
+      <div
+        class="modal-body modal-body-form"
+      >
+        <input
+          class="modal-body__text-input"
+          name="title"
+          type="text"
+        />
+         
+        <textarea
+          class="modal-body__text-input modal-body__texta"
+          name="description"
+          type="text"
+        />
+         
+        <input
+          class="modal-body__file-input"
+          name="description"
+          type="file"
+        />
+         
+        <button
+          class="add-task-btn"
+        >
+          Сохранить
+        </button>
+      </div>
+       
+      <div
+        class="modal-body modal-body-task"
+      />
+    </div>
+  </div>
+</div>
+`;
