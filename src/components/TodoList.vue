@@ -49,7 +49,6 @@ export default {
   methods: {
     showTask (task) {
       this.$root.$emit('openShowModal', Object.assign({}, task))
-      console.log(task)
     },
     createTask (task) {
       this.listItems.push(task)
