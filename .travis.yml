@@ -16,7 +16,6 @@ jobs:
     - stage: test
       script:
         - npm run test:unit
-        - npm run test:e2e
     - stage: build
       script: npm run build
     - stage: deploy
