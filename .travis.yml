@@ -1,9 +1,3 @@
-# Stages
-
-stages:
-  - test
-  - build
-  - deploy
 language: node_js
 node_js:
   - "stable"
