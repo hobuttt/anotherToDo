@@ -1,19 +1,33 @@
+# Stages
+
+stages:
+  - test
+  - build
+  - deploy
+
 language: node_js
 node_js:
   - "stable"
 cache:
   directories:
   - "node_modules"
+jobs:
+  include:
+    - stage: test
+      script:
+        - npm run test:unit
+    - stage: build
+      script: npm run build
+    - stage: deploy
+      deploy:
+        - provider: pages
+          edge: true
+          local-dir: dist
+          target-branch: gh-pages
+          github-token: $GH_TOKEN
+          skip-cleanup: true
+          on:
+            tags: true
+            branch: master
 
-script: npm run build
 
-deploy:
-  - provider: pages
-    edge: true
-    local-dir: dist
-    target-branch: gh-pages
-    github-token: $GH_TOKEN
-    skip-cleanup: true
-    on:
-      tags: true
-      branch: master

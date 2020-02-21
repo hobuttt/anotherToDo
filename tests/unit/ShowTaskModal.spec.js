@@ -20,6 +20,7 @@ describe('TodoList', () => {
 })
 describe('Methods', () => {
   const wrapper = shallowMount(ShowTaskModal)
+  wrapper.vm.showModal = true
 
   it('openModal is worked', () => {
     wrapper.vm.openModal()

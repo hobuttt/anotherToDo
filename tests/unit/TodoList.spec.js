@@ -1,4 +1,4 @@
-import { mount, shallowMount } from '@vue/test-utils'
+import { shallowMount } from '@vue/test-utils'
 import TodoList from '@/components/TodoList'
 
 const stub = jest.fn()
@@ -36,13 +36,5 @@ describe('Methods', () => {
     wrapper.vm.listItems = [task, task2]
     wrapper.vm.deleteTask(task2)
     expect(wrapper.vm.listItems).toEqual([task])
-  })
-})
-describe('Events', () => {
-  const wrapper = shallowMount(TodoList)
-  it('openEditModal is called', () => {
-    wrapper.setMethods({ openEditModal: stub })
-    wrapper.find('.pencil').trigger('click')
-    expect(stub).toBeCalled()
   })
 })
