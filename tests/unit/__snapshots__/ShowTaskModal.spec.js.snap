@@ -14,7 +14,7 @@ exports[`TodoList Should be render correct 1`] = `
         class="modal-header"
       >
         <h2>
-          Просмотр задачи
+          Просмотр задачи: test
         </h2>
          
         <button
@@ -27,15 +27,39 @@ exports[`TodoList Should be render correct 1`] = `
       </div>
        
       <div
-        class="modal-body"
+        class="modal-body modal-show-body"
       >
-        <div />
+        <h4>
+          Описание:
+        </h4>
          
-        <button
-          class="check-task-btn done-task-btn"
+        <div
+          style="display: flex;"
         >
-          Выполненно
-        </button>
+          <div
+            class="modal-show-body__image"
+          >
+            <img
+              alt=""
+              src="undefined"
+              style="width: 100%;"
+            />
+          </div>
+           
+          <div
+            class="modal-show-body__description"
+          >
+            
+          </div>
+        </div>
+         
+        <div>
+          <button
+            class="check-task-btn done-task-btn"
+          >
+            Выполненно
+          </button>
+        </div>
       </div>
        
       <div

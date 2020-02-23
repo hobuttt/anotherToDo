@@ -3,16 +3,23 @@
     <div class="modal-wrapper">
       <div class="modal-container">
         <div class="modal-header">
-          <h2>Просмотр задачи</h2>
+          <h2>Просмотр задачи: {{task.title}}</h2>
           <button class="modal-close-button close-show-task-btn" @click="showModal = false">
             X
           </button>
         </div>
 
-        <div class="modal-body">
-          <div></div>
-          <button class="check-task-btn done-task-btn" @click="checkTask" v-if="!task.done">Выполненно</button>
-          <button class="check-task-btn undone-task-btn" @click="checkTask" v-else>Не выполненно</button>
+        <div class="modal-body modal-show-body">
+          <h4>Описание:</h4>
+          <div style="display: flex">
+            <div class="modal-show-body__image"><img :src="`${task.img}`" alt="" style="width: 100%"></div>
+            <div class="modal-show-body__description">{{task.description}}</div>
+          </div>
+          <div>
+            <button class="check-task-btn done-task-btn" @click="checkTask" v-if="!task.done">Выполненно</button>
+            <button class="check-task-btn undone-task-btn" @click="checkTask" v-else>Не выполненно</button>
+          </div>
+
         </div>
         <div class="modal-body modal-body-task">
 
@@ -126,4 +133,17 @@ export default {
       background-color: #eee;
     }
   }
+  .modal-show-body {
+    flex-direction: column;
+    &__description {
+      width: 80%;
+      padding-top: 10px;
+      padding-left: 20px;
+      text-align: left
+    }
+    &__image {
+      width: 20%;
+    }
+  }
+
 </style>
