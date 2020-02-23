@@ -7,6 +7,7 @@ const task = { title: 'test', id: 42, done: false }
 describe('TodoList', () => {
   const wrapper = shallowMount(ShowTaskModal)
   wrapper.vm.showModal = true
+  wrapper.vm.task = task
 
   it('should render', () => {
     expect(wrapper.is(ShowTaskModal)).toBe(true)
@@ -19,16 +20,19 @@ describe('TodoList', () => {
   })
 })
 describe('Methods', () => {
-  const wrapper = shallowMount(ShowTaskModal)
-  wrapper.vm.showModal = true
+  let wrapper
+  beforeEach(() => {
+    wrapper = shallowMount(ShowTaskModal)
+    wrapper.vm.task = task
+  })
 
   it('openModal is worked', () => {
-    wrapper.vm.openModal()
+    wrapper.vm.openModal(task)
     expect(wrapper.vm.showModal).toEqual(true)
   })
 
   it('checkTask is worked', () => {
-    wrapper.vm.task = task
+    wrapper.vm.showModal = true
     wrapper.vm.checkTask()
     expect(wrapper.vm.task.done).toEqual(true)
   })
@@ -36,7 +40,7 @@ describe('Methods', () => {
 describe('Buttons', () => {
   const wrapper = shallowMount(ShowTaskModal)
   wrapper.vm.showModal = true
-  wrapper.vm.task = { id: 42, done: false }
+  wrapper.vm.task = task
   const doneTaskBtn = wrapper.find('.done-task-btn')
   const closeShowTaskBtn = wrapper.find('.close-show-task-btn')
 
