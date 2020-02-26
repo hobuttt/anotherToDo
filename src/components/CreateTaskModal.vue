@@ -95,7 +95,7 @@ export default {
   }
 
   .modal-container {
-    width: 500px;
+    width: 250px;
     margin: 0 auto;
     padding: 20px 30px;
     background-color: #fff;
@@ -103,6 +103,12 @@ export default {
     box-shadow: 0 2px 8px rgba(0, 0, 0, .33);
     transition: all .3s ease;
     font-family: Helvetica, Arial, sans-serif;
+    @media (min-width: 375px) {
+      width: 300px;
+    }
+    @media (min-width: 600px) {
+      width: 500px;
+    }
   }
 
   .modal-enter {
