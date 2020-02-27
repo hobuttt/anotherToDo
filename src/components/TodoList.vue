@@ -77,7 +77,7 @@ export default {
   .list-item{
     position: relative;
     display: flex;
-    height: 100px;
+    flex-direction: column;
     margin-top: 30px;
     padding: 15px 20px;
     border: 2px solid #ccc;
@@ -85,6 +85,10 @@ export default {
     transition: box-shadow .2s linear;
     cursor: pointer;
     align-items: center;
+    @media (min-width: 768px) {
+      height: 100px;
+      flex-direction: row;
+    }
     &:hover {
       box-shadow: 1px 3px 7px 1px rgba(0, 0, 0, 0.5);
     }
@@ -103,15 +107,34 @@ export default {
       }
     }
     &__sidebox {
-      width: 90%;
+      width: 100%;
       display: flex;
       flex-direction: column;
+      @media (min-width: 768px) {
+        width: 70%;
+      }
+      @media (min-width: 1200px) {
+        width: 90%;
+      }
     }
     &__image {
-      width: 10%;
-      height: 100%;
+      width: 80%;
+      max-height: 100px;
+      @media (min-width: 768px) {
+        width: 30%;
+        height: 100%;
+      }
+      @media (min-width: 1200px) {
+        width: 10%;
+      }
       img {
         height: 100%;
+        width: 50%;
+        overflow: hidden;
+        object-fit: cover;
+        @media (min-width: 768px) {
+          width: 100%;
+        }
       }
     }
     &__title {
